@@ -17,25 +17,33 @@ def process(roman_num : str) -> int:
     for j in roman_num:
         roman_list.append(j)
 
-
-    for i in range(len(roman_list)):
+    i = 0
+    n = len(roman_list)
+    
+    while True:
         try:
             num1, num2 = int(dict_romance_intiger(roman_list[i])), int(dict_romance_intiger(roman_list[i+1]))
+            print(num1, num2)     
             if num1 > num2 or num1 == num2:
-                int_number = int_number + num1
-                
-            else:
-                num1 = num2 - num1
                 int_number += num1
-                                
+                i += 1
+            
+            else:
+                num = num2 - num1
+                int_number += num
+                i += 2
+        
         except IndexError:
-            num1, num2 = int(dict_romance_intiger(roman_list[i])), int(dict_romance_intiger(roman_list[i-1]))
-            if num1 > num2:
+            if (int(dict_romance_intiger(roman_list[i]))) > (int(dict_romance_intiger(roman_list[i-1]))):
                 pass
             else:
-                int_number = int_number + 1
-    
-    
-    return int_number, roman_list
+                int_number += (int(dict_romance_intiger(roman_list[i])))
+            break
+           
+
+        if i >= n:
+            break
+        
+    return int_number
 
 print(process("MCMXCIV"))
