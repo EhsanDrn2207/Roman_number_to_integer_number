@@ -1,3 +1,5 @@
+from input_roman_number import user_input
+
 def dict_romance_intiger(roman_letter):
     
     dict_nums = {"I" : 1, "X" : 10, "C" : 100, "M" : 1000, "V" : 5,  "L" : 50, "D" : 500, }
@@ -31,4 +33,10 @@ def process(roman_letter : str) -> int:
         
     return int_number
 
-print(process("MCMXCIV"))
+romance_number = user_input()
+
+with open("numbers.txt", 'a') as file:
+    number = process(romance_number)
+    print(number)
+    file.write(str(number))
+    file.write("\n---------------------------------\n")

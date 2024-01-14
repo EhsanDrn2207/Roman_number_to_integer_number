@@ -7,7 +7,7 @@ def user_input():
         try:
             user_input = input("Enter a romance number: ")
             for i in user_input:
-                if i.upper() not in user_input:
+                if i.upper() not in valid_letters:
                     raise InvalidStringInput
                 
             return user_input.upper()
