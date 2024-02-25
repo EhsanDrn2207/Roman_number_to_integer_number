@@ -7,33 +7,35 @@ def dict_romance_intiger(roman_letter):
     
 def process(roman_letter : str) -> int:
     int_number = 0
-    i = 0
-    n = len(roman_letter)
+    index = 0
+    roman_letter_length = len(roman_letter)
     
     while True:
         try:
-            num1, num2 = int(dict_romance_intiger(roman_letter[i])), int(dict_romance_intiger(roman_letter[i+1]))
+            # finding the equivalent of roman numbers
+            num1, num2 = int(dict_romance_intiger(roman_letter[index])), int(dict_romance_intiger(roman_letter[index+1]))
             
         except IndexError:
-            if (int(dict_romance_intiger(roman_letter[i]))) < (int(dict_romance_intiger(roman_letter[i-1]))):
-                int_number += (int(dict_romance_intiger(roman_letter[i])))
+            # for the last roman numbers
+            if (int(dict_romance_intiger(roman_letter[index]))) < (int(dict_romance_intiger(roman_letter[index-1]))):
+                int_number += (int(dict_romance_intiger(roman_letter[index])))
                 break
         
         if num1 > num2 or num1 == num2:
             int_number += num1
-            i += 1
+            index += 1
 
         else:
-            num = num2 - num1
+            num = num2 - num1 # IV = 4, IX = 9, XC = 90 , ......
             int_number += num
-            i += 2
+            index += 2
 
-        if i >= n:
+        if index >= roman_letter_length:
             break
         
     return int_number
 
-romance_number = user_input()
+romance_number = user_input() # get roman number from user
 
 with open("numbers.txt", 'a') as file:
     number = process(romance_number)
