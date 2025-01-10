@@ -1,7 +1,7 @@
 import tkinter as tk
 
 root = tk.Tk()
-root.title("Romance to integer")
+root.title("Roman Numeral Converter")
 root.colormapwindows("")
 
 disply_lbl = tk.Label(
@@ -10,17 +10,17 @@ disply_lbl = tk.Label(
     
 )
 
-def dict_romance_intiger(roman_letter):
+def dict_roman_intiger(roman_letter):
     
     dict_nums = {"I" : 1, "X" : 10, "C" : 100, "M" : 1000, "V" : 5,  "L" : 50, "D" : 500, }
     return dict_nums[roman_letter]
 
-def attach_number(romance_number):
+def attach_number(roman_number):
     
-    if romance_number in ["I", "X", "C", "M", "V", "L", "D"]:
-        disply_lbl['text'] += romance_number
+    if roman_number in ["I", "X", "C", "M", "V", "L", "D"]:
+        disply_lbl['text'] += roman_number
         
-    elif romance_number == "Clean":
+    elif roman_number == "Clean":
         disply_lbl["text"] = ""
         
     else:
@@ -32,11 +32,11 @@ def attach_number(romance_number):
         
         while True:
             try:
-                num1, num2 = int(dict_romance_intiger(current[i])), int(dict_romance_intiger(current[i+1]))
+                num1, num2 = int(dict_roman_intiger(current[i])), int(dict_roman_intiger(current[i+1]))
                 
             except IndexError:
-                if (int(dict_romance_intiger(current[i]))) < (int(dict_romance_intiger(current[i-1]))):
-                    int_number += (int(dict_romance_intiger(current[i])))
+                if (int(dict_roman_intiger(current[i]))) < (int(dict_roman_intiger(current[i-1]))):
+                    int_number += (int(dict_roman_intiger(current[i])))
                     break
             
             if num1 > num2 or num1 == num2:
@@ -128,8 +128,6 @@ for button in keyword_icon:
 
 disply_lbl.grid(row=0, column=0, columnspan=3)
 
-
-print(value_list)
 
 row_num, column_num = 1, 0
 row_num2 , column_num2 = 2,0

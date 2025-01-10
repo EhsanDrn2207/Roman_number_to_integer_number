@@ -1,6 +1,6 @@
 from input_roman_number import user_input
 
-def dict_romance_intiger(roman_letter):
+def dict_roman_intiger(roman_letter):
     
     dict_nums = {"I" : 1, "X" : 10, "C" : 100, "M" : 1000, "V" : 5,  "L" : 50, "D" : 500, }
     return dict_nums[roman_letter]
@@ -13,12 +13,12 @@ def process(roman_letter : str) -> int:
     while True:
         try:
             # finding the equivalent of roman numbers
-            num1, num2 = int(dict_romance_intiger(roman_letter[index])), int(dict_romance_intiger(roman_letter[index+1]))
+            num1, num2 = int(dict_roman_intiger(roman_letter[index])), int(dict_roman_intiger(roman_letter[index+1]))
             
         except IndexError:
             # for the last roman numbers
-            if (int(dict_romance_intiger(roman_letter[index]))) < (int(dict_romance_intiger(roman_letter[index-1]))):
-                int_number += (int(dict_romance_intiger(roman_letter[index])))
+            if (int(dict_roman_intiger(roman_letter[index]))) < (int(dict_roman_intiger(roman_letter[index-1]))):
+                int_number += (int(dict_roman_intiger(roman_letter[index])))
                 break
         
         if num1 > num2 or num1 == num2:
@@ -35,10 +35,11 @@ def process(roman_letter : str) -> int:
         
     return int_number
 
-romance_number = user_input() # get roman number from user
+roman_numeralXX = user_input() # get roman number from user
 
 with open("numbers.txt", 'a') as file:
-    number = process(romance_number)
+    number = process(roman_numeral)
     print(number)
     file.write(str(number))
     file.write("\n---------------------------------\n")
+    

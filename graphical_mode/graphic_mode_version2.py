@@ -1,4 +1,4 @@
-from tkinter import Tk, ttk, StringVar, Text
+from tkinter import Tk, ttk
 
 root = Tk()
 
@@ -13,17 +13,17 @@ disply_lbl = ttk.Label(
 disply_lbl.grid(row=0, column=0, columnspan=5, sticky=('e', 'w', 'n', 's'))
 
 
-def dict_romance_intiger(roman_letter : str) -> int:
+def dict_roman_intiger(roman_letter : str) -> int:
     
     dict_nums = {"I" : 1, "X" : 10, "C" : 100, "M" : 1000, "V" : 5,  "L" : 50, "D" : 500, }
     return dict_nums[roman_letter]
 
-def attach_number(romance_number : str):
+def attach_number(roman_number : str):
     
-    if romance_number in ["I", "X", "C", "M", "V", "L", "D"]:
-        disply_lbl['text'] += romance_number
+    if roman_number in ["I", "X", "C", "M", "V", "L", "D"]:
+        disply_lbl['text'] += roman_number
         
-    elif romance_number == "Clear":
+    elif roman_number == "Clear":
         disply_lbl["text"] = ""
         
     else:
@@ -34,16 +34,16 @@ def attach_number(romance_number : str):
         n = len(current)
         
         if n == 1:
-            disply_lbl["text"] = str(dict_romance_intiger(current))
+            disply_lbl["text"] = str(dict_roman_intiger(current))
             
         else:
             while True:
                 try:
-                    num1, num2 = int(dict_romance_intiger(current[i])), int(dict_romance_intiger(current[i+1]))
+                    num1, num2 = int(dict_roman_intiger(current[i])), int(dict_roman_intiger(current[i+1]))
                     
                 except IndexError:
-                    if (int(dict_romance_intiger(current[i]))) < (int(dict_romance_intiger(current[i-1]))):
-                        int_number += (int(dict_romance_intiger(current[i])))
+                    if (int(dict_roman_intiger(current[i]))) < (int(dict_roman_intiger(current[i-1]))):
+                        int_number += (int(dict_roman_intiger(current[i])))
                         break
                     
                 except KeyError:
